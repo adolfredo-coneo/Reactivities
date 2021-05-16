@@ -1,0 +1,47 @@
+//Create solution
+dotnet new sln
+
+//Create webapi project
+dotnet new webapi -n API
+
+//Create the class libraies Application project
+dotnet new classlib -n Application
+
+//Create the class libraies Domain project
+dotnet new classlib -n Domain
+
+//Create the class libraies Domain project
+dotnet new classlib -n Persistence
+
+//Add projects to the Domain
+dotnet sln add .\API\API.csproj
+dotnet sln add .\Application\  
+dotnet sln add .\Domain\
+dotnet sln add .\Persistence\
+
+//List projects
+dotnet sln list
+
+//Set projects dependencies
+cd API
+dotnet add reference ../Application
+cd Application
+dotnet add reference ../Persistence
+dotnet add reference ../Domain
+cd persistence
+dotnet add reference ../Domain
+
+//vs code settings
+exclude **/bin and **/obj
+
+//Run the Application
+dotnet run
+dotnet watch run
+
+//Migrations
+dotnet ef migrations add InitialCreate -p Persistence -s API
+dotnet ef database update
+
+//GIT Repository
+git init
+dotnet new gitignore
