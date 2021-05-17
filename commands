@@ -45,3 +45,8 @@ dotnet ef database update
 //GIT Repository
 git init
 dotnet new gitignore
+git add .
+git commit -m "initializing repository"
+git branch -M main
+git remote add origin https://github.com/adolfredo-coneo/Reactivities.git
+git push -u origin main
